@@ -23,7 +23,9 @@ export function Navbar() {
         </Link>
 
         <nav className="flex items-center gap-4">
-          {user && isAdmin ? (
+          {/* Only show Dashboard + Logout when admin is logged in */}
+          {/* Never show Login button - admin accesses /auth manually */}
+          {user && isAdmin && (
             <>
               <Button
                 variant="ghost"
@@ -46,14 +48,6 @@ export function Navbar() {
                 Logout
               </Button>
             </>
-          ) : (
-            <Button
-              variant="default"
-              size="sm"
-              asChild
-            >
-              <Link to="/auth">Login</Link>
-            </Button>
           )}
         </nav>
       </div>
