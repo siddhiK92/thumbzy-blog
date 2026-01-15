@@ -94,7 +94,7 @@ const BlogDetail = () => {
 
       <footer className="border-t border-border/50 py-8">
         <div className="container text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} BlogCraft. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ThumbzyBlog. All rights reserved.</p>
         </div>
       </footer>
     </div>

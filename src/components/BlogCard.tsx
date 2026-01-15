@@ -8,17 +8,27 @@ interface BlogCardProps {
   slug: string;
   excerpt?: string | null;
   createdAt: string;
+  imageUrl?: string | null;
   index?: number;
 }
 
-export function BlogCard({ title, slug, excerpt, createdAt, index = 0 }: BlogCardProps) {
+export function BlogCard({ title, slug, excerpt, createdAt, imageUrl, index = 0 }: BlogCardProps) {
   return (
     <Link to={`/blog/${slug}`}>
       <Card 
         className="group glass-card overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg animate-slide-up"
         style={{ animationDelay: `${index * 100}ms` }}
       >
-        <CardHeader className="pb-3">
+        {imageUrl && (
+          <div className="aspect-video overflow-hidden">
+            <img
+              src={imageUrl}
+              alt={title}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        )}
+        <CardHeader className={imageUrl ? "pb-3 pt-4" : "pb-3"}>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <CalendarDays className="h-4 w-4" />
             <time dateTime={createdAt}>

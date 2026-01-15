@@ -25,6 +25,7 @@ const PostEditor = () => {
   const [slug, setSlug] = useState('');
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [isPublished, setIsPublished] = useState(false);
 
   const { data: post, isLoading: isLoadingPost } = useQuery({
@@ -49,6 +50,7 @@ const PostEditor = () => {
       setSlug(post.slug);
       setExcerpt(post.excerpt || '');
       setContent(post.content);
+      setImageUrl(post.image_url || '');
       setIsPublished(post.is_published);
     }
   }, [post]);
@@ -74,6 +76,7 @@ const PostEditor = () => {
         slug,
         excerpt: excerpt || null,
         content,
+        image_url: imageUrl || null,
         is_published: isPublished,
         author_id: user?.id,
       };
@@ -198,6 +201,29 @@ const PostEditor = () => {
                   rows={2}
                   disabled={saveMutation.isPending}
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="imageUrl">Image URL (optional)</Label>
+                <Input
+                  id="imageUrl"
+                  placeholder="https://example.com/image.jpg"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  disabled={saveMutation.isPending}
+                />
+                {imageUrl && (
+                  <div className="mt-2 overflow-hidden rounded-lg border border-border">
+                    <img
+                      src={imageUrl}
+                      alt="Preview"
+                      className="h-40 w-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="space-y-2">
