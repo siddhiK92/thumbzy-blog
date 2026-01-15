@@ -29,7 +29,7 @@ const Index = () => {
           <div className="mx-auto max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm text-primary">
               <PenLine className="h-4 w-4" />
-              Welcome to BlogCraft
+              Welcome to ThumbzyBlog
             </div>
             <h1 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Thoughts, Stories &{' '}
@@ -61,6 +61,7 @@ const Index = () => {
                   slug={post.slug}
                   excerpt={post.excerpt}
                   createdAt={post.created_at}
+                  imageUrl={post.image_url}
                   index={index}
                 />
               ))}
@@ -84,7 +85,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border/50 py-8">
         <div className="container text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} BlogCraft. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ThumbzyBlog. All rights reserved.</p>
         </div>
       </footer>
     </div>

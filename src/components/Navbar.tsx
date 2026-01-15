@@ -18,7 +18,7 @@ export function Navbar() {
         <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
           <PenLine className="h-6 w-6 text-primary" />
           <span className="font-serif text-xl font-semibold tracking-tight">
-            Blog<span className="text-primary">Craft</span>
+            Thumbzy<span className="text-primary">Blog</span>
           </span>
         </Link>
 
